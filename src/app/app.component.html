@@ -1,0 +1,24 @@
+@if(rowData.length > 0){
+
+  <div style="flex: 1 1 0%">
+    <ag-grid-angular
+      #agGrid
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      [gridOptions]="gridOptions"
+      class="grid-table ag-theme-alpine"
+      rowSelection="multiple"
+      [defaultColDef]="{ resizable: true }"
+      (gridReady)="onGridReady($event)"
+      [sideBar]="true"
+      [rowSelection]="rowSelection"
+    />
+  </div>
+  <div class="buttonsDiv">
+<button class="selectRowBtn" (click)="getSelectedRows()">Retrieve Selected Rows</button>
+<button class="updatebtn" (click)="enableEditing()" [disabled]="isEditing">Update</button>
+<button class="saveBtn" (click)="saveUpdatedData()" [disabled]="!isEditing">Save</button>
+</div>
+} @else{
+<p>No Data</p>
+}
